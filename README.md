@@ -99,6 +99,10 @@ pylint --disable=R,C,W1203 app.py
 --------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 ```
+#### docker image
+```
+docker pull nepgpn/udacity-microservice-project:latest
+```
 
 ### CircleCi Integration
 
