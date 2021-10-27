@@ -84,9 +84,8 @@ make: *** [lint] Error 1
 ##### Fixes: 
 ```
 vi Dockerfile make the following change
-```
 # hadolint ignore=DL3013,DL3042
-```
+
 RUN pip install --upgrade pip==21.3.1 &&\
     pip install --trusted-host pypi.python.org -r requirements.txt
 ```
