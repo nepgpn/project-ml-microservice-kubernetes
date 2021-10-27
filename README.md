@@ -1,2 +1,2 @@
 # project-ml-microservice-kubernetes
-this for udacity devops project 
+[![CircleCI](https://circleci.com/gh/nepgpn/project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://circleci.com/gh/nepgpn/project-ml-microservice-kubernetes/tree/main)
