@@ -32,7 +32,7 @@ Run make install to install the necessary dependencies
 1. Standalone: `python app.py`
 2. Docker: `./run_docker.sh`
 3. Kubetnetes: `./run_kubernetes.sh`
-4. upload docker image to personal Docker hub: `./uplaod_docker.sh`
+4. upload docker image to personal Docker hub: `./upload_docker.sh`
 5. Delete kubernetes Pods: `kubectl delete pods <PodName>`
 
 ###### Troubleshoot during the steps:
@@ -101,14 +101,12 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 ```
 
 ### CircleCi Integration
-```
+
 Signup for circlci account with your github
 
-1.0 create a `.circleci` dir and create a `config.yml` file.
-2.0 copy the content of the yaml from the templete provided
-3.0 push the code to your git hub
-4.0 setup the project in circleci by selecting your project branch and the config.yml
-5.0 Add the badge to README.md if workflow is sucessfull.
-```
-
+1. create a `.circleci` dir and create a `config.yml` file.
+2. copy the content of the yaml from the templete provided
+3. push the code to your git hub
+4. setup the project in circleci by selecting your project branch and the config.yml
+5. Add the badge to README.md if workflow is sucessfull.
 
