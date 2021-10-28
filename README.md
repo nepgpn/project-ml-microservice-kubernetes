@@ -16,101 +16,47 @@ Improve the log statements in the source code for this application
 Configure Kubernetes and create a Kubernetes cluster
 Deploy a container using Kubernetes and make a prediction
 Upload a complete Github repo with CircleCI to indicate that your code has been tested
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
+You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view)
 
-The final implementation of the project will showcase your abilities to operationalize production microservices.
+**The final implementation of the project will showcase your abilities to operationalize production microservices.**
+-------------
+#### Setup the environment
 
-### Setup the Environment
-
-Create a virtualenv and activate it
-python3 -m venv ~/.devops
-source ~/.devops/bin/activate
-Run make install to install the necessary dependencies
-
-##### Run app.py via Docker and Kubernetes
-
-1. Standalone: `python app.py`
-2. Docker: `./run_docker.sh`
-3. Kubetnetes: `./run_kubernetes.sh`
-4. upload docker image to personal Docker hub: `./upload_docker.sh`
-5. Delete kubernetes Pods: `kubectl delete pods <PodName>`
-
-###### Troubleshoot during the steps:
+- Create a virtualenv and activate it
+- `python3 -m venv ~/.devops`
+- `source ~/.devops/bin/activate`
+- Run make install to install the necessary python dependencies and hadolint 
+- Address any warning/error with the  Dockerfile and source code 
 ```
-(.devops)  % make lint
-
+# This is linter for Dockerfiles
 hadolint Dockerfile
-pylint --disable=R,C,W1203 app.py
-************* Module app
-app.py:23:11: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-
------------------------------------
-Your code has been rated at 9.64/10
-make: *** [lint] Error 4
-```
-###### Fixes: 
-```
-vi app.py and remove  'f' on line 23
-
- 21 @app.route("/")
- 22 def home():
- 23     html = f"<h3>Sklearn Prediction Home</h3>" 
- 24     return html.format(format)
- 25 
- 26 @app.route("/predict", methods=['POST'])
- 27 def predict():
- 28     """Performs an sklearn prediction
- ```
-
-###### Result: 
-```
-(.devops)  % make lint
-
-hadolint Dockerfile
-pylint --disable=R,C,W1203 app.py
+# This is a linter for Python source code linter: https://www.pylint.org/
+# This should be run from inside a virtualenv
+pylint --disable=R,C,W1202,W1203 app.py
 -------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.64/10, +0.36)
-
-```
-###### Hadolint Warning/Error:
-```
-(.devops)  % make lint
-
-hadolint Dockerfile
-Dockerfile:13 DL3013 warning: Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>` or `pip install --requirement <requirements file>`
-Dockerfile:13 DL3042 warning: Avoid use of cache directory with pip. Use `pip install --no-cache-dir <package>`
-make: *** [lint] Error 1
-```
-##### Fixes: 
-```
-vi Dockerfile make the following change
-# hadolint ignore=DL3013,DL3042
-
-RUN pip install --upgrade pip==21.3.1 &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
+Your code has been rated at 10.00/10 (previous run: 8.62/10, +1.38)
 ```
 
-#### Result:
-```
-(.devops)  % make lint    
-hadolint Dockerfile
-pylint --disable=R,C,W1203 app.py
+#### Run app.py via Docker and Kubernetes
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
-```
-#### docker image
-```
-docker pull nepgpn/udacity-microservice-project:latest
-```
+- Standalone: `python app.py`
+- Docker: `./run_docker.sh`
+- Kubetnetes: `./run_kubernetes.sh`
+- upload docker image to personal Docker hub: `./upload_docker.sh`
+- Delete kubernetes Pods: `kubectl delete pods <PodName>`
 
-### CircleCi Integration
+####  Delete Cluster
 
-Signup for circlci account with your github
+If you want to delete the kubernetes cluster just run this command `minikube delete`. You can also stop the kubernetes cluster with this command `minikube stop`
 
-1. create a `.circleci` dir and create a `config.yml` file.
-2. copy the content of the yaml from the templete provided
-3. push the code to your git hub
-4. setup the project in circleci by selecting your project branch and the config.yml
-5. Add the badge to README.md if workflow is sucessfull.
+
+#### CircleCi Integration
+
+- Signup for circlci account with your github if you do not have one [CircleCI Account](https://circleci.com/)
+- create a `.circleci` dir and create a `config.yml` file.
+- copy the content of the yaml from the templete provided
+- push the code to your git hub
+- setup the project in circleci by selecting your project branch and the config.yml
+- Add the badge to README.md if workflow is sucessfull.
+
 
