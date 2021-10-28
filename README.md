@@ -26,7 +26,7 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 - `python3 -m venv ~/.devops`
 - `source ~/.devops/bin/activate`
 - Run make install to install the necessary python dependencies and hadolint 
-- Address any warning/error with the  Dockerfile and source code 
+- Address any warning/error with the  Dockerfile and source code. Example 
 ```
 # This is linter for Dockerfiles
 hadolint Dockerfile
@@ -47,7 +47,7 @@ Your code has been rated at 10.00/10 (previous run: 8.62/10, +1.38)
 
 ####  Delete Cluster
 
-If you want to delete the kubernetes cluster just run this command `minikube delete`. You can also stop the kubernetes cluster with this command `minikube stop`
+After completion of the project, run `minikube delete` or  stop the kubernetes cluster with this command `minikube stop`
 
 
 #### CircleCi Integration
